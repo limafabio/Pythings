@@ -54,6 +54,31 @@ class Fraction:
         new_den = self.den * other.num
         return Fraction(new_num,new_den)
 
+
+    def __index__(self):
+        interger = self.num / self.den
+        rest = (self.num / self.den) // 1
+        if (rest < 0.6):
+            return  (interger - rest)
+        else:
+            return (interger - rest + 1)
+
+    def __invert__(self):
+        return Fraction(~self.num,~self.den)
+
+    def __mul__(self,other):
+        new_den = self.num * other.num
+        new_num = self.den * other.den
+        return Fraction(new_den,new_num)
+
+    def __neg__(self,other):
+        return Fraction(-self.num,self.den)
+
+    def __pow__(self,power):
+        new_num = self.num ** power
+        new_den = self.den ** power
+        return Fraction(new_num,new_den)
+
     def __eq__(self,other):
         first_num = self.num *other.den
         second_num = other.num * self.den

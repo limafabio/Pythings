@@ -54,7 +54,6 @@ class Fraction:
         new_den = self.den * other.num
         return Fraction(new_num,new_den)
 
-
     def __index__(self):
         interger = self.num / self.den
         rest = (self.num / self.den) // 1
@@ -74,11 +73,42 @@ class Fraction:
     def __neg__(self,other):
         return Fraction(-self.num,self.den)
 
+    def __or__(self,other):
+        new_num = self.num | other.num
+        new_den = self.den | self.den
+        return Fraction(new_num, new_den)
+
+    def __pos__(self):
+        if (self.den < 0 and self.num > 0):
+            new_num = self.num
+            new_den = -self.den
+        elif (self.den > 0 and self.num < 0):
+            new_num = -self.num
+            new_den = self.den
+        return Fraction(new_num,new_den)
+
     def __pow__(self,power):
         new_num = self.num ** power
         new_den = self.den ** power
         return Fraction(new_num,new_den)
 
+
+    def __sub__(self,other):
+        new_num = self.num*other.den - self.den*other.num
+        new_den = self.num*other.num
+        common = self.gdc(new_num,new_den)
+        return Fraction(new_num // common, new_den // common)
+
+    def __truediv__(self,other):
+        new_num = self.num*other.den
+        new_den = self.den*other.num
+        common = self.gdc(new_num, new_den)
+        return Fraction(new_num // common ,new_den // common)
+
+    def __xor__(self,other):
+        new_num = self.num ^ other.num
+        new_den = self.den ^ other.den
+        return Fraction(new_num,new_den)
     def __eq__(self,other):
         first_num = self.num *other.den
         second_num = other.num * self.den

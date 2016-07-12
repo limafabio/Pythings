@@ -7,6 +7,7 @@
 #GPL License
 #---------------------
 #It's a Fraction class with a binary operators with test in the main
+#Develop with python 2.7
 
 class Fraction:
 
@@ -25,6 +26,10 @@ class Fraction:
             m = old_n
             n = old_m % old_n
         return n
+
+
+    def convert(self):
+        return self.num / self.num
 
     def __abs__(self):
         if (self.den < 0):
@@ -54,6 +59,17 @@ class Fraction:
         new_den = self.den * other.num
         return Fraction(new_num,new_den)
 
+    def __eq__(self,other):
+        first_num = self.num *other.den
+        second_num = other.num * self.den
+        return first_num == second_num
+
+    def __ge__(self,other):
+        return self.convert() >= other.convert()
+
+    def __gt__(self,other):
+        return self.convert() > other.convert()
+
     def __index__(self):
         interger = self.num / self.den
         rest = (self.num / self.den) // 1
@@ -65,6 +81,13 @@ class Fraction:
     def __invert__(self):
         return Fraction(~self.num,~self.den)
 
+
+    def __le__(self,other):
+        return self.convert() <= other.convert()
+
+    def __lt__(self,other):
+        return self.convert() < other.convert()
+
     def __mul__(self,other):
         new_den = self.num * other.num
         new_num = self.den * other.den
@@ -72,6 +95,12 @@ class Fraction:
 
     def __neg__(self,other):
         return Fraction(-self.num,self.den)
+
+
+    def __not__(self):
+        new_num = not self.num
+        new_den = not self.den
+        return Fraction(new_num,new_den)
 
     def __or__(self,other):
         new_num = self.num | other.num
@@ -92,7 +121,6 @@ class Fraction:
         new_den = self.den ** power
         return Fraction(new_num,new_den)
 
-
     def __sub__(self,other):
         new_num = self.num*other.den - self.den*other.num
         new_den = self.num*other.num
@@ -109,10 +137,6 @@ class Fraction:
         new_num = self.num ^ other.num
         new_den = self.den ^ other.den
         return Fraction(new_num,new_den)
-    def __eq__(self,other):
-        first_num = self.num *other.den
-        second_num = other.num * self.den
-        return first_num == second_num
 
     def show(self):
         print self.num,"/",self.den

@@ -27,7 +27,6 @@ class Fraction:
             n = old_m % old_n
         return n
 
-
     def convert(self):
         return self.num / self.num
 
@@ -64,6 +63,7 @@ class Fraction:
         second_num = other.num * self.den
         return first_num == second_num
 
+
     def __ge__(self,other):
         return self.convert() >= other.convert()
 
@@ -81,6 +81,11 @@ class Fraction:
     def __invert__(self):
         return Fraction(~self.num,~self.den)
 
+    def __is__(self,other):
+        return self is other
+
+    def __is_not(self,other):
+        return  self is not other
 
     def __le__(self,other):
         return self.convert() <= other.convert()
@@ -93,9 +98,12 @@ class Fraction:
         new_num = self.den * other.den
         return Fraction(new_den,new_num)
 
+
+    def __ne__(self,other):
+        return self != other
+
     def __neg__(self,other):
         return Fraction(-self.num,self.den)
-
 
     def __not__(self):
         new_num = not self.num

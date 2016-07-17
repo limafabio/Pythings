@@ -11,13 +11,16 @@
 
 class Fraction:
 
+    #initialization
     def __init__(self,top,bottom):
         self.num = top
         self.den = bottom
 
+    #return the number to string
     def __str__(self):
         return str(self.num)+"/"+str(self.den)
 
+    #return the grant divisor common between m and n
     def gdc(self,m,n):
         while m%n != 0:
             old_m = m
@@ -30,6 +33,7 @@ class Fraction:
     def convert(self):
         return self.num / self.num
 
+    #return the absolute value
     def __abs__(self):
         if (self.den < 0):
             new_den = -self.den
@@ -42,31 +46,36 @@ class Fraction:
             new_num = self.num
         return Fraction(new_num,new_den)
 
+    #return fraction with sum of 2 numbers
     def __add__(self,other_fraction):
         new_num = self.num*other_fraction.den + self.den*other_fraction.num
         new_den = self.den*other_fraction.den
         common = self.gdc(new_num,new_den)
         return Fraction(new_num // common ,new_den // common)
 
+    #return fraction with operation and 2 numbers
     def __and__(self,other):
         new_num = self.num & other.num
         new_den = self.den & other.den
         return Fraction(new_num,new_den)
 
+    #return fraction with division of 2 numbers
     def __div__(self,other):
         new_num = self.num * other.den
         new_den = self.den * other.num
         return Fraction(new_num,new_den)
 
+    #return true if numbers are equals
     def __eq__(self,other):
         first_num = self.num *other.den
         second_num = other.num * self.den
         return first_num == second_num
 
-
+    #return true if the object is bigger or equal than the other
     def __ge__(self,other):
         return self.convert() >= other.convert()
 
+    #return true if the object is bigger than the other
     def __gt__(self,other):
         return self.convert() > other.convert()
 
@@ -78,6 +87,7 @@ class Fraction:
         else:
             return (interger - rest + 1)
 
+    #return invert fraction
     def __invert__(self):
         return Fraction(~self.num,~self.den)
 
@@ -87,21 +97,25 @@ class Fraction:
     def __is_not(self,other):
         return  self is not other
 
+    #return true if the object is small or equal than the other
     def __le__(self,other):
         return self.convert() <= other.convert()
 
+    #return true if the object is smaller than the other
     def __lt__(self,other):
         return self.convert() < other.convert()
 
+    #return fraction with multiplication with 2 numbers
     def __mul__(self,other):
         new_den = self.num * other.num
         new_num = self.den * other.den
         return Fraction(new_den,new_num)
 
-
+    #return true if the numbers are not equals
     def __ne__(self,other):
         return self != other
 
+    #return fraction with negative number
     def __neg__(self,other):
         return Fraction(-self.num,self.den)
 
@@ -110,11 +124,13 @@ class Fraction:
         new_den = not self.den
         return Fraction(new_num,new_den)
 
+    #return fraction with operation or in 2 numbers
     def __or__(self,other):
         new_num = self.num | other.num
         new_den = self.den | self.den
         return Fraction(new_num, new_den)
 
+    #return fraction with the positive number
     def __pos__(self):
         if (self.den < 0 and self.num > 0):
             new_num = self.num
@@ -124,11 +140,13 @@ class Fraction:
             new_den = self.den
         return Fraction(new_num,new_den)
 
+    #return fraction with number raised to the power
     def __pow__(self,power):
         new_num = self.num ** power
         new_den = self.den ** power
         return Fraction(new_num,new_den)
 
+    #return fraction subtracted by the number other
     def __sub__(self,other):
         new_num = self.num*other.den - self.den*other.num
         new_den = self.num*other.num
@@ -141,11 +159,13 @@ class Fraction:
         common = self.gdc(new_num, new_den)
         return Fraction(new_num // common ,new_den // common)
 
+    #return fraction with operation xor between 2 numbers
     def __xor__(self,other):
         new_num = self.num ^ other.num
         new_den = self.den ^ other.den
         return Fraction(new_num,new_den)
 
+    #print the fraction
     def show(self):
         print self.num,"/",self.den
 

@@ -30,8 +30,9 @@ class Fraction:
             n = old_m % old_n
         return n
 
-    def convert(self):
-        return self.num / self.num
+    #return the number in decimal value
+    def dec(self):
+        return self.num / self.den
 
     #return the absolute value
     def __abs__(self):
@@ -59,12 +60,6 @@ class Fraction:
         new_den = self.den & other.den
         return Fraction(new_num,new_den)
 
-    #return fraction with division of 2 numbers
-    def __div__(self,other):
-        new_num = self.num * other.den
-        new_den = self.den * other.num
-        return Fraction(new_num,new_den)
-
     #return true if numbers are equals
     def __eq__(self,other):
         first_num = self.num *other.den
@@ -73,37 +68,32 @@ class Fraction:
 
     #return true if the object is bigger or equal than the other
     def __ge__(self,other):
-        return self.convert() >= other.convert()
+        return self.dec() >= other.dec()
 
     #return true if the object is bigger than the other
     def __gt__(self,other):
-        return self.convert() > other.convert()
+        return self.dec() > other.dec()
 
+    #return number convert in integer
     def __index__(self):
-        interger = self.num / self.den
+        integer = self.num / self.den
         rest = (self.num / self.den) // 1
         if (rest < 0.6):
-            return  (interger - rest)
+            return  (integer - rest)
         else:
-            return (interger - rest + 1)
+            return (integer - rest + 1)
 
     #return invert fraction
     def __invert__(self):
         return Fraction(~self.num,~self.den)
 
-    def __is__(self,other):
-        return self is other
-
-    def __is_not(self,other):
-        return  self is not other
-
     #return true if the object is small or equal than the other
     def __le__(self,other):
-        return self.convert() <= other.convert()
+        return self.dec() <= other.dec()
 
     #return true if the object is smaller than the other
     def __lt__(self,other):
-        return self.convert() < other.convert()
+        return self.dec() < other.dec()
 
     #return fraction with multiplication with 2 numbers
     def __mul__(self,other):
@@ -119,6 +109,7 @@ class Fraction:
     def __neg__(self,other):
         return Fraction(-self.num,self.den)
 
+    #return fraction with operation not
     def __not__(self):
         new_num = not self.num
         new_den = not self.den
@@ -153,6 +144,7 @@ class Fraction:
         common = self.gdc(new_num,new_den)
         return Fraction(new_num // common, new_den // common)
 
+    #return the division between 2 numbers with simplication
     def __truediv__(self,other):
         new_num = self.num*other.den
         new_den = self.den*other.num

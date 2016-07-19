@@ -2,12 +2,14 @@
 
 # name file: Fraction.py
 #
-#Author: Fabio Lima
-#Version 1 08/07/2016
-#GPL License
-#---------------------
-#It's a Fraction class with a binary operators with test in the main
-#Develop with python 2.7
+# Author: Fabio Lima
+# Version 1 08/07/2016
+# GPL License
+# ---------------------
+# It's a Fraction class with a binary operators with test in the main
+# Develop with python 2.7
+
+import unittest
 
 class Fraction:
 
@@ -31,7 +33,7 @@ class Fraction:
         return n
 
     #return the number in decimal value
-    def dec(self):
+    def floor(self):
         return self.num / self.den
 
     #return the absolute value
@@ -161,12 +163,24 @@ class Fraction:
     def show(self):
         print self.num,"/",self.den
 
+class TestMethods(unittest.TestCase):
+
+    def test_init(self):
+        test = Fraction(1,2)
+        self.assertEqual(Fraction(1,2),test)
+
+    def test_gdc(self):
+        test = Fraction(1,2)
+        self.assertEqual(test.gdc(2,4),2)
+
+    def test_floor(self):
+        test = Fraction(2,3)
+        self.assertEqual(test.floor(),0)
+
+    def test_abs(self):
+        test = Fraction(-1,2)
+        self.assertEqual(test,-1/2)
+
 if __name__ == "__main__":
-    f1 = Fraction(1,2)
-    f1.show()
-    f2 = Fraction(1,2)
-    print f1 + f2
-    print f1 == f2
-    f3 = Fraction(-1,3)
-    print abs(f3)
-    print f2 & f3
+
+    unittest.main()

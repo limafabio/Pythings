@@ -32,9 +32,13 @@ class Fraction:
             n = old_m % old_n
         return n
 
-    #return the number in decimal value
+    #return a number convert to integer and remove decimal value
     def floor(self):
-        return self.num / self.den
+        return int(self.num / self.den)
+
+    #return a number convert to integer around to the bigger nearest integer value
+    def ceil(self):
+        return int(float(self.num) / float(self.den) + 0.5)
 
     #return the absolute value
     def __abs__(self):
@@ -177,9 +181,73 @@ class TestMethods(unittest.TestCase):
         test = Fraction(2,3)
         self.assertEqual(test.floor(),0)
 
+    def test_ceil(self):
+        test = Fraction(7,10)
+        self.assertEqual(test.ceil(),1)
+
     def test_abs(self):
         test = Fraction(-1,2)
-        self.assertEqual(test,-1/2)
+        other = Fraction(1,2)
+        self.assertEqual(abs(test),other)
+
+    def teste_add(self):
+        test = Fraction(1,2)
+        other = Fraction(1,3)
+        result = Fraction(5,6)
+        self.assertEqual(test + other, result)
+
+    def teste_eq(self):
+        test = Fraction(1,2)
+        other = Fraction(1,2)
+        self.assertEqual(test == other,True)
+
+    def teste_ge(self):
+        test = Fraction(1,2)
+        other = Fraction(1,3)
+        self.assertEqual(test >= other,True)
+
+    def teste_gt(self):
+        test = Fraction(1,2)
+        other = Fraction(1,3)
+        self.assertEqual(test > other,True)
+
+    def teste_index(self):
+        test = Fraction(1,2)
+        other = Fraction(1,3)
+        result = Fraction(1,2)
+        self.assertEqual(test & other,result)
+
+    def teste_invert(self):
+        test = Fraction(1,2)
+        result = Fraction(-1,2)
+        self.assertEqual(test,result)
+
+    def teste_le(self):
+        test = Fraction(1,2)
+        other = Fraction(1,3)
+        self.assertEqual(test <= other,False)
+
+    def teste_lt(self):
+        test = Fraction(1,2)
+        other = Fraction(1,3)
+        self.assertEqual(other < test,False)
+
+    def teste_mul(self):
+        test = Fraction(1,2)
+        other = Fraction(1,3)
+        result = Fraction(1,6)
+        self.assertEqual(test * other,result)
+
+    def teste_ne(self):
+        test = Fraction(1,2)
+        other = Fraction(1,3)
+        self.assertEqual(test != other,True)
+
+    def teste_neg(self):
+        test = Fraction(1,2)
+        result = Fraction(-1,2)
+        self.assertEqual(-test,result)
+
 
 if __name__ == "__main__":
 

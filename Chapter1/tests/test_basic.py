@@ -9,9 +9,8 @@
 # It's a Fraction class with a binary operators with test in the main
 # Develop with python 2.7
 
-from .context import sample
-
 import unittest
+from .context import Fraction
 
 class TestMethods(unittest.TestCase):
 

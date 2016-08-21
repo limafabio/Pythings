@@ -10,7 +10,7 @@
 # Develop with python 2.7
 
 import unittest
-from .context import Fraction
+from sample import Fraction
 
 class TestMethods(unittest.TestCase):
 

@@ -24,7 +24,19 @@ class Stack:
 		return self.items.pop()
 
 	def peek(self):
-		return self.items[len(self.items)-1]
+		size = len(self.items)-1
+		return self.items[size]
 
 	def size(self):
 		return len(self.items)
+
+	def revString(self, elem):
+		split = list(elem)
+		for char in split:
+			self.push(char)
+		
+		answer = None
+		while not self.isEmpty():
+			answer.join(self.items)
+			self.pop()
+		return answer

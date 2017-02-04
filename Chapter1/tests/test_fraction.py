@@ -9,8 +9,9 @@
 # It's a Fraction class with a binary operators with test in the main
 # Develop with python 2.7
 
-import unittest
-from sample import Fraction
+import unittest,os,sys
+sys.path.append(os.path.abspath('..'))
+from src.fraction import Fraction
 
 class TestMethods(unittest.TestCase):
 
@@ -62,9 +63,10 @@ class TestMethods(unittest.TestCase):
         result = Fraction(1,2)
         self.assertEqual(test & other,result)
 
+    '''
     def teste_invert(self):
         test = Fraction(1,2)
-        print test.invert()
+    '''
 
     def teste_le(self):
         test = Fraction(1,2)

@@ -29,15 +29,16 @@ import sys,os
 sys.path.append(os.path.abspath('../../3.5/src/'))
 from stack import Stack
 
-def verifyPar(simbol):
+class Stack(Stack):
+	def verifyPar(self,simbol):
 
-	for par in simbol:
-		if (par != ')' and par != '('):
-			return False
-		if (par == ')' and self.isEmpty):
-			return False
-		if (par == '('):
-			self.push(simbol)
-		elif (simbol == ')' and not self.isEmpty):
-			self.pop()
-	return True	
+		for par in simbol:
+			if (par != ')' and par != '('):
+				return False
+			if (par == ')' and self.isEmpty):
+				return False
+			if (par == '('):
+				self.push(par)
+			elif (simbol == ')' and not self.isEmpty):
+				self.pop()
+		return True	

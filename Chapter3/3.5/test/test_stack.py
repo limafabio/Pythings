@@ -34,7 +34,7 @@ class TestMethods(unittest.TestCase):
 
 	def test_revString(self):
 		test = Stack()
-		self.assertEqual(test.revString('abc'),'c b a')
+		self.assertEqual(test.revString('abc'),'cba')
 
 if __name__ == "__main__":
 	unittest.main()

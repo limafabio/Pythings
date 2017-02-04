@@ -31,12 +31,12 @@ class Stack:
 		return len(self.items)
 
 	def revString(self, elem):
-		split = list(elem)
+		split = (elem)
 		for char in split:
 			self.push(char)
-		
-		answer = None
+
+		answer = ''
 		while not self.isEmpty():
-			answer.join(self.items)
+			answer += self.peek()	
 			self.pop()
 		return answer

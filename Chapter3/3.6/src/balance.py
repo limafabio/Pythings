@@ -2,7 +2,7 @@
 
 #solved by FabioLima
 #
-#NameScript:	Balance.py
+#NameScript:	balance.py
 #
 #Author and Maintaining: Fabio Lima
 #
@@ -12,7 +12,7 @@
 #
 #-----------------------------------
 #
-#Example:
+#Example: python balance.py
 #
 #
 #-----------------------------------
@@ -35,10 +35,11 @@ class Stack(Stack):
 		for par in simbol:
 			if (par != ')' and par != '('):
 				return False
-			if (par == ')' and self.isEmpty):
+			elif (par == ')' and self.isEmpty()):
 				return False
-			if (par == '('):
-				self.push(par)
-			elif (simbol == ')' and not self.isEmpty):
+			elif (par == '('):
+				self.push('(')
+			elif (par == ')' and (not self.isEmpty())):
 				self.pop()
-		return True	
+
+		return self.isEmpty()

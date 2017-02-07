@@ -6,12 +6,12 @@
 #Author and Maintaining: Fabio Lima
 #
 #-----------------------------------
-#Description:
-#
+#Description: just simple test with balance class,
+#that is a extension of stack class in folder 3.5
 #
 #-----------------------------------
 #
-#Example:
+#Example: python test_balance.py
 #
 #
 #-----------------------------------
@@ -30,9 +30,17 @@ from src.balance import Stack
 
 class TestMethods(unittest.TestCase):
 
-	def test_checkBalance(self):
+	def test_checkBalanceTrue(self):
 		test = Stack()
 		self.assertTrue(test.verifyPar('()'))
+
+	def test_checkBalanceFalse1(self):
+		test = Stack()
+		self.assertFalse(test.verifyPar(')('))
+	
+	def test_checkBalanceFalse2(self):
+		test = Stack()
+		self.assertFalse(test.verifyPar('(('))
 
 if __name__ == "__main__":
 	unittest.main()

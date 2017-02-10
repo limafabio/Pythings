@@ -26,7 +26,7 @@
 #
 import unittest,os,sys
 sys.path.append(os.path.abspath('..'))
-import src.binary from Stack
+from src.binary import Stack
 
 class TestMethods(unittest.TestCase):
 
@@ -34,11 +34,11 @@ class TestMethods(unittest.TestCase):
         test = Stack()
         self.assertEqual(test.divideBy2(127),'1111111')
 
-    def testSmallNumber(self):
+    def testSmallNumber1(self):
         test = Stack()
         self.assertEqual(test.divideBy2(1),'1')
 
-    def testSmallNumber(self):
+    def testSmallNumber2(self):
         test = Stack()
         self.assertEqual(test.divideBy2(2),'10')
 

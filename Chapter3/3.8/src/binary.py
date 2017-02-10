@@ -32,12 +32,12 @@ class Stack(Stack):
     def divideBy2(self,number):
         test = Stack()
         while number > 0:
-            if (number / 2) == 1:
-                stack.push(1)
+            if (number%2) == 1:
+                test.push(1)
             else:
-                stack.push(0)
+                test.push(0)
             number /= 2
         seqBin = ''
         while not test.isEmpty():
-            seq = seq + test.pop()
+            seqBin = seqBin + str(test.pop())
         return seqBin

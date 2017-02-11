@@ -6,12 +6,12 @@
 #Author and Maintaining: Fabio Lima
 #
 #-----------------------------------
-#Description:
+#Description: Test for 2 functions convert base
 #
 #
 #-----------------------------------
 #
-#Example:
+#Example: python test_binary.py
 #
 #
 #-----------------------------------
@@ -30,17 +30,29 @@ from src.binary import Stack
 
 class TestMethods(unittest.TestCase):
 
-    def testBigNumber(self):
+    def testBase2BigNumber(self):
         test = Stack()
         self.assertEqual(test.divideBy2(127),'1111111')
 
-    def testSmallNumber1(self):
+    def testBase2SmallNumber1(self):
         test = Stack()
         self.assertEqual(test.divideBy2(1),'1')
 
-    def testSmallNumber2(self):
+    def testBase2SmallNumber2(self):
         test = Stack()
         self.assertEqual(test.divideBy2(2),'10')
+
+    def testBaseConvert1(self):
+        test = Stack()
+        self.assertEqual(test.baseConverter('25','8'),'31')
+
+    def testBaseConvert2(self):
+        test = Stack()
+        self.assertEqual(test.baseConverter('256','16'),'100')
+
+    def testBaseConvert3(self):
+        test = Stack()
+        self.assertEqual(test.baseConverter('26','26'),'10')
 
 if __name__ == "__main__":
     unittest.main()

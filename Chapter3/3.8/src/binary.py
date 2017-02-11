@@ -41,3 +41,16 @@ class Stack(Stack):
         while not test.isEmpty():
             seqBin = seqBin + str(test.pop())
         return seqBin
+
+    def baseConverter(self,decimalNumber,base):
+        digits = "0123456789ABCEF"
+        test = Stack()
+        while decimalNumber > 0:
+            remainder = int(decimalNumber) % int(base)
+            test.push(remainder)
+            decimalNumber = int(decimalNumber) // int(base)
+        answer = ''
+        while not test.isEmpty():
+            index = test.pop()
+            answer += digits[index]
+        return answer
